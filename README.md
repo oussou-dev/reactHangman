@@ -1,2 +1,0 @@
-# reactHangman
-Created with CodeSandbox
