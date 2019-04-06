@@ -1,7 +1,8 @@
 import React from "react"
 import "./App.css"
-import LettersToGuess from "./components/LettersToGuess/LettersToGuess"
+import WordsToGuess from "./components/WordsToGuess/WordsToGuess"
 import KeyPad from "./components/KeyPad/KeyPad"
+import GameBoard from "./components/GameBoard/GameBoard"
 
 class App extends React.Component {
 	state = {
@@ -46,8 +47,7 @@ class App extends React.Component {
 				<h2>Bienvenue!</h2>
 				<p>Nb d'essais restants : ?</p>
 				<p>Mots à deviner : </p>
-				<LettersToGuess />
-				<KeyPad />
+				<GameBoard wordsToFind="lucky" />
 			</div>
 		)
 	}
