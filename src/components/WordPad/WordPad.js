@@ -8,10 +8,10 @@ const styles = {
 	cursor: "pointer"
 }
 
-const WordPad = ({ word, clickLetter }) => {
+const WordPad = ({ letter, clickLetter }) => {
 	return (
-		<button style={styles} onClick={() => clickLetter()}>
-			{word}
+		<button style={styles} onClick={() => clickLetter(letter)}>
+			{letter}
 		</button>
 	)
 }

@@ -1,7 +1,7 @@
 import React from "react"
 import "./App.css"
-import WordsToGuess from "./components/WordsToGuess/WordsToGuess"
-import KeyPad from "./components/KeyPad/KeyPad"
+// import LettersToGuess from "./components/LettersToGuess/LettersToGuess"
+// import KeyPad from "./components/KeyPad/KeyPad"
 import GameBoard from "./components/GameBoard/GameBoard"
 
 class App extends React.Component {
@@ -44,10 +44,10 @@ class App extends React.Component {
 		return (
 			<div className="App">
 				<h1>HangMan Game with React.js</h1>
-				<h2>Bienvenue!</h2>
+				<h2>Bienvenue !</h2>
 				<p>Nb d'essais restants : ?</p>
 				<p>Mots à deviner : </p>
-				<GameBoard wordsToFind="lucky" />
+				<GameBoard wordToFind="lucky" />
 			</div>
 		)
 	}

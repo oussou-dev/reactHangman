@@ -38,10 +38,28 @@ class KeyPad extends React.Component {
 					"Y",
 					"Z"
 				]
-			]
+			],
+			wordToFind: props.wordToFind,
+			lettersFound: {},
+			letterClickHandler: props.letterClick
 		}
+		this.state["lettersFound"] = this.findLetters()
+	}
 
-		this.checkLetterHandler = this.clickLetterHandler.bind(this)
+	findLetters = () => {
+		let find = {}
+		this.state.keyboard.forEach(letterRow => {
+			letterRow.forEach(letter => {
+				const letterInWord = this.state.wordToFind
+					.toLowerCase()
+					.includes(letter.toLowerCase())
+				find[letter] = {
+					clicked: false,
+					cls: letterInWord ? "found" : "missed"
+				}
+			})
+			return find
+		})
 	}
 
 	clickLetterHandler(btn) {
@@ -49,13 +67,13 @@ class KeyPad extends React.Component {
 	}
 
 	render() {
-		let keysPad = this.state.keyboard.map(row => (
-			<p>
+		let keysPad = this.state.keyboard.map((row, index) => (
+			<p key={index}>
 				{row.map((word, i) => (
 					<WordPad
-						key={i + word}
-						word={word}
-						clickLetter={this.clickLetterHandler()}
+						key={i}
+						letter={word}
+						clickLetter={this.state.letterClickHandler}
 					/>
 				))}
 			</p>
