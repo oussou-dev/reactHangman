@@ -67,22 +67,14 @@ class KeyPad extends React.Component {
 	}
 
 	renderBtn = letter => {
-		let cls = ""
+		let cls = "styleBtn"
 		if (this.state.lettersFound[letter].clicked) {
 			cls = cls + " " + this.state.lettersFound[letter].cls
 		}
 
-		const styleBtn = {
-			padding: "10px",
-			margin: "5px",
-			backgroundColor: "white",
-			border: "1px solid deepskyblue",
-			cursor: "pointer"
-		}
 		return (
 			<button
 				key={letter}
-				style={styleBtn}
 				className={cls}
 				onClick={() => this.handleBtnClick(letter)}
 			>

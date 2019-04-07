@@ -1,7 +1,15 @@
 .styleBtn {
 	padding: 10px;
 	margin: 5px;
-	background-color: "white";
-	border: "1px solid deepskyblue";
-	cursor: "pointer";
+	background-color: white;
+	border: 1px solid deepskyblue;
+	cursor: pointer;
+}
+
+.found {
+	background-color: lightgreen;
+}
+
+.missed {
+	background-color: grey;
 }

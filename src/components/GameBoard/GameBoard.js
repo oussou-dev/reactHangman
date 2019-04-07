@@ -5,6 +5,7 @@ import KeyPad from "../KeyPad/KeyPad"
 class GameBoard extends React.Component {
 	constructor(props) {
 		super(props)
+		const wordToFind = props.wordToFind
 
 		this.checkLetterHandler = this.checkLetter.bind(this)
 	}
