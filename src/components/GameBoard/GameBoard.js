@@ -26,7 +26,6 @@ class GameBoard extends React.Component {
 
 	checkLetter(letter) {
 		// alert("checkletter:" + letter)
-		// console.log(this.state.wordToFind.toLowerCase())
 		if (
 			!this.state.wordToFind
 				.toLowerCase()
@@ -111,6 +110,21 @@ class GameBoard extends React.Component {
 					/>
 				)}
 				{this.state.status === "GAME OVER" && (
+					<div>
+						Le mot à trouver était :{" "}
+						<span
+							style={{
+								marginTop: "50px",
+								backgroundColor: "plum",
+								fontWeight: "bold",
+								fontSize: " 20px"
+							}}
+						>
+							{this.props.wordToFind}
+						</span>
+					</div>
+				)}
+				{this.state.status !== "In Progress" && (
 					<button
 						style={{
 							margin: "40px",

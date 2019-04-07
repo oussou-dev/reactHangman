@@ -40,11 +40,31 @@ class App extends React.Component {
 					"Z"
 				]
 			],
-			wordToFind: "lucky"
-			// nbTries: null,
+			wordToFind: "Elixir",
+			nbTries: null
 			// status: "In Progress"
 		}
+		this.state.wordToFind = this.randomWord()
 		this.state.nbTries = this.countNbTries()
+	}
+
+	randomWord = () => {
+		const wordsToFind = [
+			"JavaScript",
+			"Python",
+			"Ruby",
+			"Rust",
+			"Elixir",
+			"Scala",
+			"Solidity",
+			"Dart",
+			"Kotlin"
+		]
+
+		const randomWord =
+			wordsToFind[Math.round(wordsToFind.length * Math.random())]
+
+		return randomWord
 	}
 
 	countNbTries = () => {
@@ -70,7 +90,6 @@ class App extends React.Component {
 	// }
 
 	render() {
-		// console.log(this.state.nbTries)
 		return (
 			<div className="App">
 				<h1>HangMan Game with React.js</h1>
