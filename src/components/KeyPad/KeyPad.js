@@ -99,7 +99,15 @@ class KeyPad extends React.Component {
 			<p key={index}>{row.map(letter => this.renderBtn(letter))}</p>
 		))
 
-		return <div>{keysPad}</div>
+		return (
+			<div
+				style={{
+					marginTop: "40px"
+				}}
+			>
+				{keysPad}
+			</div>
+		)
 	}
 }
 

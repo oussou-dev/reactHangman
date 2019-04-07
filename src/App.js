@@ -5,54 +5,82 @@ import "./App.css"
 import GameBoard from "./components/GameBoard/GameBoard"
 
 class App extends React.Component {
-	state = {
-		keyboard: [
-			[
-				"A",
-				"B",
-				"C",
-				"D",
-				"E",
-				"F",
-				"G",
-				"H",
-				"I",
-				"J",
-				"K",
-				"L",
-				"M"
+	constructor() {
+		super()
+		this.state = {
+			keyboard: [
+				[
+					"A",
+					"B",
+					"C",
+					"D",
+					"E",
+					"F",
+					"G",
+					"H",
+					"I",
+					"J",
+					"K",
+					"L",
+					"M"
+				],
+				[
+					"N",
+					"O",
+					"P",
+					"Q",
+					"R",
+					"S",
+					"T",
+					"U",
+					"V",
+					"W",
+					"X",
+					"Y",
+					"Z"
+				]
 			],
-			[
-				"N",
-				"O",
-				"P",
-				"Q",
-				"R",
-				"S",
-				"T",
-				"U",
-				"V",
-				"W",
-				"X",
-				"Y",
-				"Z"
-			]
-		],
-		wordToFind: "lucky"
+			wordToFind: "lucky"
+			// nbTries: null,
+			// status: "In Progress"
+		}
+		this.state.nbTries = this.countNbTries()
 	}
 
+	countNbTries = () => {
+		const countTries = this.state.wordToFind.length + 3
+		return countTries
+	}
+
+	// checkLetter = letter => {
+	// 	// alert("checkletter:" + letter)
+	// 	if (
+	// 		this.state.wordToFind
+	// 			.lowerToCase()
+	// 			.includes(letter.lowerToCase())
+	// 	) {
+	// 		const nbTries = this.state.nbTries - 1
+	// 		const status = nbTries === 0 ? "GAME OVER" : "IN PROGRESS"
+
+	// 		this.setState({
+	// 			nbTries: nbTries,
+	// 			status: status
+	// 		})
+	// 	}
+	// }
+
 	render() {
+		// console.log(this.state.nbTries)
 		return (
 			<div className="App">
 				<h1>HangMan Game with React.js</h1>
 				<h2>Bienvenue !</h2>
-				<p>
-					Nb d'essais restants : {this.state.wordToFind.length + 3}
-				</p>
-				<p>Mots à deviner : </p>
+				{/* <p>Status : {this.state.status}</p>
+				<p>Nb d'essais restants : {this.state.nbTries}</p> */}
+				{/* <p>Mots à deviner : </p> */}
 				<GameBoard
 					wordToFind={this.state.wordToFind}
-					nbTries={this.state.wordToFind.length + 3}
+					nbTries={this.state.nbTries}
 				/>
 			</div>
 		)

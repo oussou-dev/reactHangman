@@ -18,18 +18,31 @@ class GameBoard extends React.Component {
 			wordToFind: wordToFind,
 			foundLetters: foundWordToFind,
 			nbTries: parseInt(props.nbTries),
-			status: "playing"
+			status: "In Progress"
 		}
 
 		this.checkLetterHandler = this.checkLetter.bind(this)
 	}
 
 	checkLetter(letter) {
-		alert("checkletter:" + letter)
+		// alert("checkletter:" + letter)
+		// console.log(this.state.wordToFind.toLowerCase())
+		if (
+			!this.state.wordToFind
+				.toLowerCase()
+				.includes(letter.toLowerCase())
+		) {
+			const nbTries = this.state.nbTries - 1
+			const status = nbTries === 0 ? "GAME OVER" : "In Progress"
+
+			this.setState({
+				nbTries: nbTries,
+				status: status
+			})
+		}
 	}
 
 	render() {
-		console.log(this.state.nbTries)
 		let words = []
 		this.props.wordToFind.split("").map((word, index) => {
 			return words.push(<LettersToGuess key={index} value={word} />)
@@ -37,11 +50,34 @@ class GameBoard extends React.Component {
 
 		return (
 			<div>
+				<p
+					style={{
+						marginTop: "40px",
+						textDecoration: "underline"
+					}}
+				>
+					Status : {this.state.status}
+				</p>
+				<p>Nb d'essai(s) restant(s) : {this.state.nbTries}</p>
+				<p
+					style={{
+						fontWeight: "bold",
+						fontSize: "20px",
+						marginTop: "40px"
+					}}
+				>
+					Mot à deviner
+				</p>
 				<p>{words}</p>
-				<KeyPad
-					wordToFind={this.props.wordToFind}
-					letterClick={this.checkLetterHandler}
-				/>
+				{this.state.status === "In Progress" && (
+					<KeyPad
+						style={{
+							marginTop: "150px"
+						}}
+						wordToFind={this.props.wordToFind}
+						letterClick={this.checkLetterHandler}
+					/>
+				)}
 			</div>
 		)
 	}

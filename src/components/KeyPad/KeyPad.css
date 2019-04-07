@@ -8,8 +8,10 @@
 
 .found {
 	background-color: lightgreen;
+	/* display: none; */
 }
 
 .missed {
-	background-color: grey;
+	/* background-color: grey; */
+	display: none;
 }
