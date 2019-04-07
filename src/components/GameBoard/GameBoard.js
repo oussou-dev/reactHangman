@@ -55,8 +55,14 @@ class GameBoard extends React.Component {
 			}
 		}
 
+		const allValues = Object.values(this.state.foundLetters).map(
+			val => val.show
+		)
+		const status = allValues.every(val => val === true)
+
 		this.setState({
-			foundLetters: finalWordsToFind
+			foundLetters: finalWordsToFind,
+			status: status ? "YOU WIN" : "In Progress"
 		})
 	}
 
