@@ -37,7 +37,8 @@ class App extends React.Component {
 				"Y",
 				"Z"
 			]
-		]
+		],
+		wordToFind: "lucky"
 	}
 
 	render() {
@@ -45,9 +46,14 @@ class App extends React.Component {
 			<div className="App">
 				<h1>HangMan Game with React.js</h1>
 				<h2>Bienvenue !</h2>
-				<p>Nb d'essais restants : ?</p>
+				<p>
+					Nb d'essais restants : {this.state.wordToFind.length + 3}
+				</p>
 				<p>Mots à deviner : </p>
-				<GameBoard wordToFind="lucky" />
+				<GameBoard
+					wordToFind={this.state.wordToFind}
+					nbTries={this.state.wordToFind.length + 3}
+				/>
 			</div>
 		)
 	}
