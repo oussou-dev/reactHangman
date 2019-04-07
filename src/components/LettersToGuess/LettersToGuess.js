@@ -3,7 +3,11 @@ import "../LettersToGuess/LettersToGuess.css"
 
 class LettersToGuess extends React.Component {
 	render() {
-		return <span className="letterToGuess">{this.props.value}</span>
+		return (
+			<span className="letterToGuess">
+				{this.props.found ? this.props.value : ""}
+			</span>
+		)
 	}
 }
 

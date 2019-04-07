@@ -39,13 +39,39 @@ class GameBoard extends React.Component {
 				nbTries: nbTries,
 				status: status
 			})
+			return
 		}
+
+		// show or not letters found of wordToFind
+		let finalWordsToFind = this.state.foundLetters
+		for (
+			let index = 0;
+			index < this.state.wordToFind.length;
+			index++
+		) {
+			const letterInWord = this.state.wordToFind[index]
+			if (letterInWord.toLowerCase() === letter.toLowerCase()) {
+				finalWordsToFind[index].show = true
+			}
+		}
+
+		this.setState({
+			foundLetters: finalWordsToFind
+		})
+	}
+
+	replay = () => {
+		document.location.reload(true)
 	}
 
 	render() {
 		let words = []
 		this.props.wordToFind.split("").map((word, index) => {
-			return words.push(<LettersToGuess key={index} value={word} />)
+			const finalWordsToFind = this.state.foundLetters[index]
+			const show = finalWordsToFind.show
+			return words.push(
+				<LettersToGuess key={index} value={word} found={show} />
+			)
 		})
 
 		return (
@@ -77,6 +103,21 @@ class GameBoard extends React.Component {
 						wordToFind={this.props.wordToFind}
 						letterClick={this.checkLetterHandler}
 					/>
+				)}
+				{this.state.status === "GAME OVER" && (
+					<button
+						style={{
+							margin: "40px",
+							backgroundColor: "white",
+							padding: "15px",
+							borderColor: "lightgreen",
+							fontSize: "15px"
+						}}
+						type="button"
+						onClick={() => this.replay()}
+					>
+						Rejouer
+					</button>
 				)}
 			</div>
 		)
